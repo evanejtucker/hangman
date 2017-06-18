@@ -1,0 +1,26 @@
+
+.container {
+	width: 70%;
+	margin-top: 100px;
+}
+
+.jumbotron {
+	/*margin-top: 100px;*/
+}
+
+#info-side {
+	margin-top: 50px;
+}
+
+#hangman-pic {
+	height: 200px;
+	width: 200px;
+}
+
+#footer {
+	margin-top: 300px;
+}
+
+.countries {
+	background: lightblue;
+}

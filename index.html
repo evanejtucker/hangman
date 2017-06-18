@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="us-en">
+<head>
+	<meta charset="UTF-8">
+
+	<!-- JQuery -->
+  	<script src="https://code.jquery.com/jquery.js"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<!-- Style Sheet -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+	<!-- links google fonts -->
+
+	<!-- Links font awesome -->
+	<script src="https://use.fontawesome.com/d577f206bb.js"></script>
+
+	<!-- add favicon -->
+	<link rel="icon" href="assets/images/hangman.png">
+
+	<title> Hangman Game </title>
+
+</head>
+
+<body>
+	
+<div class="container">
+	
+	<div class="jumbotron text-center" id="startScrene">
+	  <h1>Hangmania</h1>
+	  <h3> Select a category to begin </h3>
+	  	<form>
+		  <div class="form-group">
+		  	<select class="form-control" id="category">
+			  <option>Heroes</option>
+			  <option>Villains</option>
+			  <option>Planets</option>
+			  <option>Countries</option>
+			  <option>Movies</option>
+			</select>
+		  </div>
+		  <button type="submit" class="btn btn-warning" id="submit">Play</button>
+		</form>
+	</div>
+
+	<div class="row text-center" id="game">
+		<!-- title -->
+		<div class="col-md-12 text-center">
+			<h2 id="title">Hangman Game</h2>
+		</div>
+		<!-- contains game info -->
+		<div class="col-md-6" id="info-side">
+			<img id="hangman-pic" src="assets/images/hangman.png">
+			<h2 id="nameTag">Hangman</h2><hr>
+			<div class="text-center">
+              	<button class="btn btn-warning btn-xs play-button"><span class="glyphicon glyphicon-music"></span> Play Theme</button>
+              	<button class="btn btn-default btn-xs pause-button"><span class="glyphicon glyphicon-pause"></span> Pause</button>
+            </div>
+			<h5 id="powers-tag"></h5>
+			<p id="description"> Guess the letters to form the name of a superhero or villain before your run out of guesses.</p>
+		</div>
+		<!-- game -->
+		<div class="col-md-6" id="game-side">
+			<h2 id="message"> Press any key to get started! </h2><hr>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+				    	<h3 class="panel-title">Word to guess</h3>
+			     	</div>
+					<div class="panel-body" id="wordToGuess">
+					    ________________
+					</div>
+					<div class="panel-body" id="hintButton">
+						<!-- hint button -->
+						<button class="btn btn-default btn-xs hint-button" id="hint-button"><span class="glyphicon glyphicon-question-sign"></span> Get Hint</button>
+						<div id="hint-answer"></div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+				    	<h3 class="panel-title">Letters Guessed</h3>
+			     	</div>
+					<div class="panel-body" id="wrongGuesses">
+
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-body">
+					    Guesses Left: <span id="guessesLeft"> 10 </span>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-body">
+					    <span class="glyphicon glyphicon-thumbs-up pull-left" aria-hidden="true"></span>  Wins: <span id="wins"> 0 </span><span class="glyphicon glyphicon-thumbs-up pull-right" aria-hidden="true"></span>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-body">
+					    <span class="glyphicon glyphicon-thumbs-down pull-left" aria-hidden="true"></span>  Losses: <span id="losses"> 0 </span> <span class="glyphicon glyphicon-thumbs-down pull-right" aria-hidden="true"></span>
+					</div>
+				</div>
+		</div>
+	</div>
+
+	<div class="row" id="stats">
+		<div class="col-md-12">
+			stats
+		</div>
+	</div>
+
+</div>
+
+
+
+<!-- footer -->
+<div class="row text-center" id="footer">
+	<div class="col-md-12">
+	<span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span>
+	Copywrite 2017. Evan Tucker </div>
+</div>
+
+<!-- Links gamescript -->
+<script type="text/javascript" src="assets/javascript/script.js">
+</script>
+
+</body>
+</html>
