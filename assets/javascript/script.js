@@ -33,8 +33,15 @@ var setCategory = function() {
 
 	if(selectedCategory === "Heroes") {
 		$("body").addClass("heroes");
-		// heroes = [];
-		// wordOptions.push(heroes);
+	}
+
+	if(selectedCategory === "Villains") {
+		$("body").addClass("villain");
+	}
+
+	if(selectedCategory === "Planets") {
+		$("body").addClass("planets");
+		var planets = ["Earth", "Jupiter", "Mars", "Venus", "Neptune", "Mercury", "Saturn", "Uranus"];
 	}
 }
 
@@ -54,7 +61,7 @@ function setSelectedWord() {
 
 	selectedWord = wordOptions.splice(Math.floor(Math.random() * wordOptions.length), 1)[0];
 	usedOptions.push(selectedWord);
-	console.log(usedOptions);
+
 
 }
 
@@ -86,9 +93,7 @@ function startGame() {
 
 	// testing / debugging
 	console.log(selectedWord);
-	console.log(lettersInWord);
-	console.log(numBlanks);
-	console.log(blanksAndSuccesses);
+
 }
 
 function checkLetter(letter) {
@@ -116,8 +121,6 @@ function checkLetter(letter) {
 		guessesRemaining--;
 	}
 
-	// testing/ debugging
-	console.log(blanksAndSuccesses);
 }
 
 function roundComplete() {
@@ -129,7 +132,6 @@ function roundComplete() {
 	$("#guessesRemaining").html(guessesRemaining);
 
 	var onlyLetters = blanksAndSuccesses.map(removeSpaces);
-  	console.log(onlyLetters);
 
 	// check if user won
 	if (lettersInWord.toString() === onlyLetters.toString()) {
@@ -180,9 +182,6 @@ document.onkeyup = function(event) {
 		var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
 		checkLetter(letterGuessed);
 		roundComplete();
-		
-		// testing / debugging
-		console.log(letterGuessed);
 	} 
 }
 
