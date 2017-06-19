@@ -4,7 +4,8 @@ $(document).ready(function() {
 // ---------------------------------------------------------------------------------
 
 var spaceChar = "<span class='space'></span>";
-var wordOptions = ["green arrow", "wonder woman", "batman", "superman"];
+var wordOptions = ["Green Arrow", "Wonder Woman", "Batman", "Superman", "Captain America", "Shazam", "Aquaman"];
+var usedOptions = [];
 var selectedWord ="";
 var letterInWord = [];
 var numBlanks = 0;
@@ -23,7 +24,7 @@ var guessesRemaining = 10;
 // ---------------------------------------------------------------------------------
 
 var setCategory = function() {
-	
+
 	$(".container").addClass("gameContainer");
 
 	if(selectedCategory === "Countries") {
@@ -32,6 +33,8 @@ var setCategory = function() {
 
 	if(selectedCategory === "Heroes") {
 		$("body").addClass("heroes");
+		// heroes = [];
+		// wordOptions.push(heroes);
 	}
 }
 
@@ -43,8 +46,20 @@ var removeSpaces = function (char) {
   }
 }
 
-function startGame() {
+function setSelectedWord() {
+	if (wordOptions.length === 0) {
+    wordOptions = usedOptions;
+    alert("all done");
+  	}
+
 	selectedWord = wordOptions.splice(Math.floor(Math.random() * wordOptions.length), 1)[0];
+	usedOptions.push(selectedWord);
+	console.log(usedOptions);
+
+}
+
+function startGame() {
+	setSelectedWord();
 	lettersInWord = selectedWord.split("");
 	numBlanks = lettersInWord.length;
 
@@ -55,12 +70,12 @@ function startGame() {
 
 	// populated userGuess with numBlanks
 	for(i=0; i<numBlanks; i++) {
-    console.log(lettersInWord[i])
-    if (lettersInWord[i] === " ") {
-      blanksAndSuccesses.push(spaceChar);
-    } else {
-      blanksAndSuccesses.push("_");
-    }
+
+	    if (lettersInWord[i] === " ") {
+	      blanksAndSuccesses.push(spaceChar);
+	    } else {
+	      blanksAndSuccesses.push("_");
+	    }
 	}
 
 	// update html
@@ -82,7 +97,7 @@ function checkLetter(letter) {
 	var isLetterInWord = false;
 
 	for (i=0; i<numBlanks; i++) {
-		if(selectedWord[i] == letter) {
+		if(selectedWord[i].toUpperCase() == letter.toUpperCase()) {
 			isLetterInWord = true;
 		}
 	}
@@ -92,15 +107,49 @@ function checkLetter(letter) {
 		for(i=0; i<numBlanks; i++) {
 			if(selectedWord[i].toLowerCase() == letter) {
 				blanksAndSuccesses[i] = selectedWord[i];
-			} else {
-			wrongGuesses.push(letter);
-			guessesRemaining--;
-			}
+			} 
 		} 
+	} 
+	// letter wasnt found
+	else {
+		wrongGuesses.push(letter);
+		guessesRemaining--;
 	}
 
 	// testing/ debugging
 	console.log(blanksAndSuccesses);
+}
+
+function roundComplete() {
+	console.log("Wins: " + wins + " | Lives " + lives + " | Guesses Remaining " + guessesRemaining);
+
+	// update html with current game conditions
+	$("#wordToGuess").html(blanksAndSuccesses.join(" "));
+	$("#wrongGuesses").html(wrongGuesses.join(" "));
+	$("#guessesRemaining").html(guessesRemaining);
+
+	var onlyLetters = blanksAndSuccesses.map(removeSpaces);
+  	console.log(onlyLetters);
+
+	// check if user won
+	if (lettersInWord.toString() === onlyLetters.toString()) {
+		wins++;
+		alert("you win");
+		$("#wins").html(wins);
+
+		startGame();
+
+	}
+
+	// check if user lost
+	else if (guessesRemaining===0) {
+		lives--;
+		alert("you lost");
+		$("#lives").html(lives);
+
+		startGame();
+	}
+
 }
 
 
@@ -130,6 +179,7 @@ document.onkeyup = function(event) {
 	if (event.keyCode >= 65 && event.keyCode <= 90) {
 		var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
 		checkLetter(letterGuessed);
+		roundComplete();
 		
 		// testing / debugging
 		console.log(letterGuessed);
