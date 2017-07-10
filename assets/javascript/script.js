@@ -4,7 +4,7 @@ $(document).ready(function() {
 // ---------------------------------------------------------------------------------
 
 var spaceChar = "<span class='space'></span>";
-var wordOptions = ["Green Arrow", "Wonder Woman", "Batman", "Superman", "Captain America", "Shazam", "Aquaman"];
+var wordOptions = [];
 var usedOptions = [];
 var selectedWord ="";
 var letterInWord = [];
@@ -19,7 +19,6 @@ var guessesRemaining = 10;
 
 
 
-
 // Functions
 // ---------------------------------------------------------------------------------
 
@@ -27,22 +26,40 @@ var setCategory = function() {
 
 	$(".container").addClass("gameContainer");
 
-	if(selectedCategory === "Countries") {
-		$("body").addClass("countries");
-	}
-
 	if(selectedCategory === "Heroes") {
 		$("body").addClass("heroes");
+		var heroes = ["Green Arrow", "Wonder Woman", "Batman", "Superman", "Captain America", "Shazam", "Aquaman"];
+		for (i=0; i<heroes.length; i++) {
+			wordOptions.push(heroes[i]);
+		}
 	}
 
 	if(selectedCategory === "Villains") {
 		$("body").addClass("villain");
+		var villains = ["Captain Cold", "Bane"];
+		for (i=0; i<villains.length; i++) {
+			wordOptions.push(villains[i]);
+		}
 	}
 
 	if(selectedCategory === "Planets") {
 		$("body").addClass("planets");
 		var planets = ["Earth", "Jupiter", "Mars", "Venus", "Neptune", "Mercury", "Saturn", "Uranus"];
+		for (i=0; i<planets.length; i++) {
+			wordOptions.push(planets[i]);
+		}
 	}
+
+	if(selectedCategory === "Countries") {
+		$("body").addClass("countries");
+		var countries = ["Canada", "Spain"];
+		for (i=0; i<countries.length; i++) {
+			wordOptions.push(countries[i]);
+		}
+	}
+
+	// Initializes the game once a category has been selected
+	startGame();
 }
 
 var removeSpaces = function (char) {
@@ -136,7 +153,6 @@ function roundComplete() {
 	// check if user won
 	if (lettersInWord.toString() === onlyLetters.toString()) {
 		wins++;
-		alert("you win");
 		$("#wins").html(wins);
 
 		startGame();
@@ -146,7 +162,6 @@ function roundComplete() {
 	// check if user lost
 	else if (guessesRemaining===0) {
 		lives--;
-		alert("you lost");
 		$("#lives").html(lives);
 
 		startGame();
@@ -173,8 +188,6 @@ $("#submit").on("click", function(event) {
 
 });
 
-// initializes the game
-startGame();
 
 // registers key clicks
 document.onkeyup = function(event) {

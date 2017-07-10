@@ -47,7 +47,8 @@ body {
 }
 
 .villain {
-	background-image: url("../images/villain-background.png");
+	background-image: url("../images/villain-background-2.jpg");
+	/*background-size: cover;*/
 }
 
 .planets {
@@ -56,6 +57,7 @@ body {
 }
 
 .countries {
-	background: lightblue;
+	background-image: url("../images/countries-background.jpg");
+	background-size: cover;
 }
 
