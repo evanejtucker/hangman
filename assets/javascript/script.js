@@ -3,12 +3,11 @@ $(document).ready(function() {
 // Global Variables
 // ---------------------------------------------------------------------------------
 
-var AnswerInfo = require("./answerInfo.js");
 
 var spaceChar = "<span class='space'></span>";
 var wordOptions = [];
 var usedOptions = [];
-var selectedWord ="";
+var selectedCharacter ="";
 var letterInWord = [];
 var numBlanks = 0;
 var blanksAndSuccesses = [];
@@ -30,9 +29,8 @@ var setCategory = function() {
 
 	if(selectedCategory === "Heroes") {
 		$("body").addClass("heroes");
-		var heroes = ["Green Arrow", "Wonder Woman", "Batman", "Superman", "Captain America", "Shazam", "Aquaman"];
-		for (i=0; i<heroes.length; i++) {
-			wordOptions.push(heroes[i]);
+		for (i=0; i<Heroes.length; i++) {
+			wordOptions.push(Heroes[i]);
 		}
 	}
 
@@ -78,15 +76,15 @@ function setSelectedWord() {
     alert("all done");
   	}
 
-	selectedWord = wordOptions.splice(Math.floor(Math.random() * wordOptions.length), 1)[0];
-	usedOptions.push(selectedWord);
+	selectedCharacter = wordOptions.splice(Math.floor(Math.random() * wordOptions.length), 1)[0];
+	usedOptions.push(selectedCharacter);
 
 
 }
 
 function startGame() {
 	setSelectedWord();
-	lettersInWord = selectedWord.split("");
+	lettersInWord = selectedCharacter.name.split("");
 	numBlanks = lettersInWord.length;
 
 	// reset variables
@@ -111,7 +109,7 @@ function startGame() {
 	$("#lives").html(lives);
 
 	// testing / debugging
-	console.log(selectedWord);
+	console.log(selectedCharacter);
 
 }
 
@@ -121,7 +119,7 @@ function checkLetter(letter) {
 	var isLetterInWord = false;
 
 	for (i=0; i<numBlanks; i++) {
-		if(selectedWord[i].toUpperCase() == letter.toUpperCase()) {
+		if(selectedCharacter.name[i].toUpperCase() == letter.toUpperCase()) {
 			isLetterInWord = true;
 		}
 	}
@@ -129,8 +127,8 @@ function checkLetter(letter) {
 	// check where in the word the letter exists, then add it to blanks and succceses
 	if(isLetterInWord) {
 		for(i=0; i<numBlanks; i++) {
-			if(selectedWord[i].toLowerCase() == letter) {
-				blanksAndSuccesses[i] = selectedWord[i];
+			if(selectedCharacter.name[i].toLowerCase() == letter) {
+				blanksAndSuccesses[i] = selectedCharacter.name[i];
 			} 
 		} 
 	} 
@@ -157,6 +155,7 @@ function roundComplete() {
 		wins++;
 		$("#wins").html(wins);
 
+		displayInfo();
 		startGame();
 
 	}
@@ -171,6 +170,10 @@ function roundComplete() {
 
 }
 
+function displayInfo() {
+	$("#nameTag").html(selectedCharacter.name);
+	console.log(selectedCharacter);
+}
 
 
 
@@ -179,6 +182,12 @@ function roundComplete() {
 
 // hides game screen
 $("#game").hide();
+
+for (i=0; i<categories.all.length; i++) {
+	
+	var option = $("option", {text: categories.all[i].name, value: categories.all[i].name});
+	$("#category").append(option);
+}
 
 // start screen, user selects category
 $("#submit").on("click", function(event) {
@@ -199,9 +208,6 @@ document.onkeyup = function(event) {
 		roundComplete();
 	} 
 }
-
-var newAnswer = new Answers("Evan", "picture", "Sound", "description", "hint");
-newAnswer.logInfo();
 
 
 });

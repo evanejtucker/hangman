@@ -7,10 +7,18 @@ var Answers = function(name, picture, sound, description, hint) {
 	this.hint = hint;
 
 	this.logInfo = function() {
-		console.log(name +"\n"picture + "\n"sound + "\n"description + "\n"hint);
+		console.log(name +"\n" + picture + "\n" +sound + "\n" +description + "\n" + hint);
+	}
+
+}
+
+var Categories = function() {
+	var _this = this;
+	_this.all = [];
+
+	_this.add = function(category) {
+		_this.all.push(category);
 	}
 }
 
-var newAnswer = new Answers("Evan", "picture", "Sound", "description", "hint");
-
-module.exports = Answers;
+var categories = new Categories();
