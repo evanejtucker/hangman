@@ -129,9 +129,9 @@ function checkLetter(letter) {
 		for(i=0; i<numBlanks; i++) {
 			if(selectedCharacter.name[i].toLowerCase() == letter) {
 				blanksAndSuccesses[i] = selectedCharacter.name[i];
-			} 
-		} 
-	} 
+			}
+		}
+	}
 	// letter wasnt found
 	else {
 		wrongGuesses.push(letter);
@@ -184,8 +184,8 @@ function displayInfo() {
 $("#game").hide();
 
 for (i=0; i<categories.all.length; i++) {
-	
-	var option = $("option", {text: categories.all[i].name, value: categories.all[i].name});
+
+	var option = $("<option>", {text: categories.all[i].name, value: categories.all[i].name});
 	$("#category").append(option);
 }
 
@@ -206,7 +206,7 @@ document.onkeyup = function(event) {
 		var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
 		checkLetter(letterGuessed);
 		roundComplete();
-	} 
+	}
 }
 
 
