@@ -25,39 +25,11 @@ var guessesRemaining = 10;
 
 var setCategory = function() {
 
-	$(".container").addClass("gameContainer");
+  $(".container").addClass("gameContainer");
 
-	if(selectedCategory === "Heroes") {
-		$("body").addClass("heroes");
-		for (i=0; i<Heroes.length; i++) {
-			wordOptions.push(Heroes[i]);
-		}
-	}
-
-	if(selectedCategory === "Villains") {
-		$("body").addClass("villain");
-		var villains = ["Captain Cold", "Bane"];
-		for (i=0; i<villains.length; i++) {
-			wordOptions.push(villains[i]);
-		}
-	}
-
-	if(selectedCategory === "Planets") {
-		$("body").addClass("planets");
-		var planets = ["Earth", "Jupiter", "Mars", "Venus", "Neptune", "Mercury", "Saturn", "Uranus"];
-		for (i=0; i<planets.length; i++) {
-			wordOptions.push(planets[i]);
-		}
-	}
-
-	if(selectedCategory === "Countries") {
-		$("body").addClass("countries");
-		var countries = ["Canada", "Spain"];
-		for (i=0; i<countries.length; i++) {
-			wordOptions.push(countries[i]);
-		}
-	}
-
+  var category = categories.get(selectedCategory);
+  $("body").addClass(category.name);
+  wordOptions = category.set;
 	// Initializes the game once a category has been selected
 	startGame();
 }
@@ -129,9 +101,9 @@ function checkLetter(letter) {
 		for(i=0; i<numBlanks; i++) {
 			if(selectedCharacter.name[i].toLowerCase() == letter) {
 				blanksAndSuccesses[i] = selectedCharacter.name[i];
-			} 
-		} 
-	} 
+			}
+		}
+	}
 	// letter wasnt found
 	else {
 		wrongGuesses.push(letter);
@@ -184,8 +156,8 @@ function displayInfo() {
 $("#game").hide();
 
 for (i=0; i<categories.all.length; i++) {
-	
-	var option = $("option", {text: categories.all[i].name, value: categories.all[i].name});
+
+	var option = $("<option>", {text: categories.all[i].name, value: categories.all[i].name});
 	$("#category").append(option);
 }
 
@@ -206,7 +178,7 @@ document.onkeyup = function(event) {
 		var letterGuessed = String.fromCharCode(event.keyCode).toLowerCase();
 		checkLetter(letterGuessed);
 		roundComplete();
-	} 
+	}
 }
 
 
