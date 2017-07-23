@@ -3,6 +3,8 @@ $(document).ready(function() {
 // Global Variables
 // ---------------------------------------------------------------------------------
 
+var AnswerInfo = require("./answerInfo.js");
+
 var spaceChar = "<span class='space'></span>";
 var wordOptions = [];
 var usedOptions = [];
@@ -197,6 +199,9 @@ document.onkeyup = function(event) {
 		roundComplete();
 	} 
 }
+
+var newAnswer = new Answers("Evan", "picture", "Sound", "description", "hint");
+newAnswer.logInfo();
 
 
 });
