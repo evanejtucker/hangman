@@ -18,7 +18,13 @@ var Categories = function() {
 
 	_this.add = function(category) {
 		_this.all.push(category);
-	}
+  }
+
+  _this.get = function (name) {
+    return _this.all.filter(function (v) {
+      return v.name === name
+    })[0]
+  }
 }
 
 var categories = new Categories();

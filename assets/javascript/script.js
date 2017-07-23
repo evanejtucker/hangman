@@ -25,39 +25,11 @@ var guessesRemaining = 10;
 
 var setCategory = function() {
 
-	$(".container").addClass("gameContainer");
+  $(".container").addClass("gameContainer");
 
-	if(selectedCategory === "Heroes") {
-		$("body").addClass("heroes");
-		for (i=0; i<Heroes.length; i++) {
-			wordOptions.push(Heroes[i]);
-		}
-	}
-
-	if(selectedCategory === "Villains") {
-		$("body").addClass("villain");
-		var villains = ["Captain Cold", "Bane"];
-		for (i=0; i<villains.length; i++) {
-			wordOptions.push(villains[i]);
-		}
-	}
-
-	if(selectedCategory === "Planets") {
-		$("body").addClass("planets");
-		var planets = ["Earth", "Jupiter", "Mars", "Venus", "Neptune", "Mercury", "Saturn", "Uranus"];
-		for (i=0; i<planets.length; i++) {
-			wordOptions.push(planets[i]);
-		}
-	}
-
-	if(selectedCategory === "Countries") {
-		$("body").addClass("countries");
-		var countries = ["Canada", "Spain"];
-		for (i=0; i<countries.length; i++) {
-			wordOptions.push(countries[i]);
-		}
-	}
-
+  var category = categories.get(selectedCategory);
+  $("body").addClass(category.name);
+  wordOptions = category.set;
 	// Initializes the game once a category has been selected
 	startGame();
 }

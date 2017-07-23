@@ -42,21 +42,21 @@ body {
 	margin-left: 10px;
 }
 
-.heroes {
+.Heroes {
 	background-image: url("../images/heroes-background.jpg");
 }
 
-.villain {
+.Villains {
 	background-image: url("../images/villain-background-2.jpg");
 	/*background-size: cover;*/
 }
 
-.planets {
+.Planets {
 	background-image: url("../images/space-background.jpg");
 	background-size: cover;
 }
 
-.countries {
+.Countries {
 	background-image: url("../images/countries-background.jpg");
 	background-size: cover;
 }
