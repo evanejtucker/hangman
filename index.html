@@ -16,9 +16,10 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 	<!-- Style Sheet -->
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css" id="main">
 
 	<!-- links google fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata|Ubuntu" rel="stylesheet">
 
 	<!-- Links font awesome -->
 	<script src="https://use.fontawesome.com/d577f206bb.js"></script>
@@ -35,16 +36,19 @@
 <div class="container">
 	
 	<div class="jumbotron text-center" id="startScrene">
-	  <h1>Hangmania</h1>
+	  <h1 id="mainTitle">Hangmania</h1>
 	  <h3> Select a category to begin </h3>
 	  	<form>
 		  <div class="form-group">
 		  	<select class="form-control" id="category">
-			  <option>Heroes</option>
-			  <option>Villains</option>
+			  <option>Marvel</option>
+			  <option>DC</option>
 			  <option>Planets</option>
 			  <option>Countries</option>
-			  <option>Movies</option>
+			  <option>Harry Potter</option>
+			  <option>Disney</option>
+			  <option>Game of Thrones</option>
+			  <option>Nintendo</option>
 			</select>
 		  </div>
 		  <button type="submit" class="btn btn-warning" id="submit">Play</button>
@@ -126,11 +130,11 @@
 	Copywrite 2017. Evan Tucker </div>
 </div>
 
-<!-- Links gamescript -->
-<script type="text/javascript" src="assets/javascript/AnswerInfo.js"></script>
-<script type="text/javascript" src="assets/javascript/heroes.js"></script>
+<!-- Links gamescripts -->
+<!-- AnswerInfo must be loaded in first -->
+<script type="text/javascript" src="assets/javascript/AnswerInfo.js" id ="answerInfo"></script>
 
-<script type="text/javascript" src="assets/javascript/script.js"></script>
+<script type="text/javascript" src="assets/javascript/script.js" id="mainScript"></script>
 
 </body>
 </html>

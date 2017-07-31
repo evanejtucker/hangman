@@ -2,6 +2,9 @@ $(document).ready(function() {
 
 // Global Variables
 // ---------------------------------------------------------------------------------
+document.getElementById('main').disabled  = false;
+
+document.getElementById('answerInfo').disabled  = false;
 
 
 var spaceChar = "<span class='space'></span>";
@@ -27,14 +30,14 @@ var setCategory = function() {
 
 	$(".container").addClass("gameContainer");
 
-	if(selectedCategory === "Heroes") {
+	if(selectedCategory === "Marvel") {
 		$("body").addClass("heroes");
 		for (i=0; i<Heroes.length; i++) {
 			wordOptions.push(Heroes[i]);
 		}
 	}
 
-	if(selectedCategory === "Villains") {
+	if(selectedCategory === "DC") {
 		$("body").addClass("villain");
 		var villains = ["Captain Cold", "Bane"];
 		for (i=0; i<villains.length; i++) {
@@ -55,6 +58,20 @@ var setCategory = function() {
 		var countries = ["Canada", "Spain"];
 		for (i=0; i<countries.length; i++) {
 			wordOptions.push(countries[i]);
+		}
+	}
+
+	if(selectedCategory === "Disney") {
+		$("body").addClass("heroes");
+		for (i=0; i<Heroes.length; i++) {
+			wordOptions.push(Heroes[i]);
+		}
+	}
+
+	if(selectedCategory === "Harry Potter") {
+		$("body").addClass("heroes");
+		for (i=0; i<Heroes.length; i++) {
+			wordOptions.push(Heroes[i]);
 		}
 	}
 
@@ -182,12 +199,6 @@ function displayInfo() {
 
 // hides game screen
 $("#game").hide();
-
-for (i=0; i<categories.all.length; i++) {
-	
-	var option = $("option", {text: categories.all[i].name, value: categories.all[i].name});
-	$("#category").append(option);
-}
 
 // start screen, user selects category
 $("#submit").on("click", function(event) {

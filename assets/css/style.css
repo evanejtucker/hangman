@@ -1,6 +1,7 @@
 body {
-	/*background:  #BCC6CC;*/
 	background-image: url("../images/base-background.jpg");
+	font-family: 'Ubuntu', sans-serif;
+	/*font-family: 'Inconsolata', monospace;*/
 }
 
 .container {
@@ -12,8 +13,16 @@ body {
 	/*margin-top: 100px;*/
 }
 
+#mainTitle {
+
+}
+
 #info-side {
 	margin-top: 50px;
+}
+
+#wordToGuess {
+	font-size: 1.6em;
 }
 
 .panel-body {

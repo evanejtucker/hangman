@@ -12,13 +12,21 @@ var Answers = function(name, picture, sound, description, hint) {
 
 }
 
-var Categories = function() {
-	var _this = this;
-	_this.all = [];
+// var Categories = function() {
+// 	var _this = this;
+// 	_this.all = [];
 
-	_this.add = function(category) {
-		_this.all.push(category);
-	}
-}
+// 	_this.add = function(category) {
+// 		_this.all.push(category);
+// 	}
+// }
 
-var categories = new Categories();
+// var categories = new Categories();
+
+var batman = new Answers("Batman", "picture", "Sound", "description", "hint");
+
+var superman = new Answers("Superman", "picture", "Sound", "description", "hint");
+
+var greenArrow = new Answers("Green Arrow", "picture", "Sound", "description", "hint");
+
+var Heroes = [batman, superman, greenArrow, ];
